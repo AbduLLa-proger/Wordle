@@ -1,0 +1,16 @@
+{
+  "name": "wordly",
+  "version": "1.0.0",
+  "description": "Game for finding words",
+  "main": "typescript.js",
+  "scripts": {
+    "typescript": "npx tsc -p tsconfig.json --watch",
+    "start": "tsc typescript.ts"
+  },
+  "keywords": [],
+  "author": "Boybekov Abdullokh",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}

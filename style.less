@@ -1,0 +1,424 @@
+@yellowColor: #ebc454;
+@greenColor: #87b65e;
+@greyColor1: #dde1ec;
+@greyColor2: #a6aec2; 
+@darkTheme: #13141b;
+@darkGrey1: #65677e;
+@darkGrey2: #3e4052;
+
+.flex__block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.flex__column {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.flex__center {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.font__family {
+  font-family: "Host Grotesk", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  .flex__block();
+  .flex__center();
+  overflow-y: hidden;
+  
+  & h1, & p, & span {
+    .flex__block();
+    .font__family();
+  }
+
+  .cursor {
+    cursor: pointer;
+  }
+}
+button {
+  border: 0;
+  outline: none;
+}
+
+.wordle {
+
+  &_container {
+    .flex__block();
+    width: 80%;
+
+    &-inner {
+      .flex__block();
+      .flex__column();
+      
+      & .notVisible {
+        display: none;
+      }
+
+      & .hidden {
+        -webkit-animation: giveUpHidden .3s ease-in-out forwards;
+        animation: giveUpHidden .3s ease-in-out forwards;
+      }
+
+      & .visible {
+        -webkit-animation: giveUpVisible .3s ease-in-out forwards;
+        animation: giveUpVisible .3s ease-in-out forwards;
+      }
+    }
+
+    &__header {
+      .flex__block();
+      width: 100%;
+      height: 100px;
+    }
+
+    &__options {
+      width: 200px;
+      .flex__block();
+      & div {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 40px;
+        height: 24px;
+        padding: 20px;
+      }
+    }
+
+    &__text {
+      .flex__block();
+      width: 400px;
+    }
+
+    &__title {
+      font-size: 30px;
+      font-weight: 500;
+      &:last-child {
+        font-size: 25px;
+      }
+    }
+
+    &__letters {
+      height: 525px;
+      .flex__block();
+      .flex__column();
+      gap: 7px;
+      margin-bottom: 35px;
+      margin-top: 35px;
+    }
+    
+    &__letter {
+      .flex__block();
+      .flex__center();
+      .font__family();
+      font-size: 30px;
+      text-transform: capitalize;
+      border: 2px solid @greyColor1;
+      border-radius: 10px;
+      width: 80px;
+      height: 80px;
+      cursor: pointer;
+      -webkit-transition: -webkit-transform .3s ease;
+      transition: -webkit-transform .3s ease;
+      -o-transition: transform .3s ease;
+      transition: transform .3s ease;
+      transition: transform .3s ease, -webkit-transform .3s ease;
+    }
+    
+    &__keyboard {
+      height: 200px;
+      gap: 10px;
+      .flex__block();
+      .flex__column();
+      margin-bottom: 15px
+    }
+  }
+
+  &__keyboard-block {
+    .flex__block();
+    .flex__center();
+    height: 55px;
+    gap: 10px;
+
+    .remove__icon {
+      background-image: url('./images/removeWhite.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      width: 40px;
+      height: 40px;
+      font-size: 0;
+      
+      &-outer {
+        .flex__block();
+        .flex__center();
+        width: 100px;
+        background: @greyColor2;
+        border-radius: 10px;
+        &:hover {
+          background: @greyColor1;
+          & div {
+            background-image: url('./images/removeBlack.png');
+          }
+        }
+      }
+    }
+
+    & span {
+      .flex__block();
+      .flex__center();
+      background-color: @greyColor2;
+      color: @darkGrey2;
+      border-radius: 10px;
+      font-size: 20px;
+      cursor: pointer;
+      width: 100px;
+      &:hover {
+        background-color: @greyColor1;
+        color: @darkTheme;
+      }
+    }
+  }
+
+  &-options {
+    &__icon:first-child {
+      background-image: url('./images/statsBlack.png');
+    }
+    &__icon:nth-child(2) {
+      background-image: url('./images/settingsBlack.png');
+    }
+    &__icon:last-child {
+      background-image: url('./images/questionBlack.png');
+    }
+  }  
+
+  &__popup {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    .flex__block();
+    .flex__center();
+    
+    &-inner {
+      .flex__block();
+      .flex__column();
+      height: 275px;
+      width: 500px;
+      border: 1px solid @yellowColor;
+      background-color: @yellowColor;
+      border-radius: 15px;
+      padding: 10px;
+
+      & p {
+        font-size: 30px;
+        text-align: center;
+      }
+
+      & button {
+        font-size: 25px;
+        border-radius: 15px;
+        cursor: pointer;
+        &:hover {
+          background-color: @darkTheme;
+          color: white;
+        } 
+      }
+    }
+
+    &-short {
+      .flex__block();
+      height: 150px;
+      width: 250px;
+      border: 1px solid white;
+      background-color: white;
+      border-radius: 15px;
+      padding: 10px;
+      color: @darkGrey2;
+      & p {
+      .flex__center();
+      font-size: 40px;
+      }
+    }
+    &-not-found {
+      .flex__block();
+      height: 250px;
+      width: 350px;
+      border: 1px solid white;
+      background-color: white;
+      border-radius: 15px;
+      padding: 10px;
+      color: @darkGrey2;
+      & p {
+      .flex__center();
+      font-size: 40px;
+      }
+    }
+
+    &-button {
+      .flex__block();
+      gap: 12px;
+    }
+  }
+
+  &_letter_container-inner {
+    .flex__block();
+    .flex__center();
+    gap: 7px;
+  }
+
+  &-add__letter {
+    border: 2px solid @darkGrey1;
+    -webkit-animation: scaleUp 1s ease-in-out forwards;
+    animation: scaleBounce .3s ease-in-out forwards;
+  }
+
+  & .foundLetter {
+    background-color: @greenColor;
+    -webkit-transition: background-color 300ms ease-in-out;
+    -o-transition: background-color 300ms ease-in-out;
+    transition: background-color 300ms ease-in-out;
+  }
+  
+  & .notFoundLetter {
+    background-color: @greyColor2;
+    -webkit-transition: background-color 300ms ease-in-out;
+    -o-transition: background-color 300ms ease-in-out;
+    transition: background-color 300ms ease-in-out;
+  }
+  
+  & .almostFoundLetter {
+    background-color: @yellowColor;
+    -webkit-transition: background-color 300ms ease-in-out;
+    -o-transition: background-color 300ms ease-in-out;
+    transition: background-color 300ms ease-in-out;
+  }
+
+}
+
+@-webkit-keyframes scaleBounce {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  50% {
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+
+@keyframes scaleBounce {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  50% {
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@-webkit-keyframes giveUpVisible {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  50% {
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes giveUpVisible {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  50% {
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@-webkit-keyframes giveUpHidden {
+  0% {
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
+  }
+ 
+  5% {
+    -webkit-transform: scale(.5);
+            transform: scale(.5);
+  }
+ 
+  100% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+ 
+}
+
+@keyframes giveUpHidden {
+  0% {
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
+  }
+ 
+  5% {
+    -webkit-transform: scale(.5);
+            transform: scale(.5);
+  }
+ 
+  100% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+ 
+}
