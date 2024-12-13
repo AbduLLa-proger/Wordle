@@ -5,6 +5,7 @@
 @darkTheme: #13141b;
 @darkGrey1: #65677e;
 @darkGrey2: #3e4052;
+@lightBlue: #e6ecfd;
 
 .flex__block {
   display: -webkit-box;
@@ -38,6 +39,28 @@
   font-style: normal;
 }
 
+.biggerWebWidth {
+  grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+}
+.mediumWebWidth {
+  grid-template-columns: auto auto auto auto auto auto auto;
+}
+.smallWebWidth {
+  grid-template-columns: auto auto auto auto auto;
+}
+
+.media-query {
+  @media (min-width: 1110px) {
+    .biggerWebWidth();
+  }
+  @media (max-width: 1110px) {
+    .mediumWebWidth();
+  }
+  @media (max-width: 768px){
+    .smallWebWidth();
+  }
+}
+
 *,
 *::before,
 *::after {
@@ -47,6 +70,11 @@
   margin: 0;
   width: 100%;
   height: 100%;
+}
+
+html {
+  overflow: auto;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -72,14 +100,15 @@ button {
 
   &_container {
     .flex__block();
-    width: 80%;
+    width: 100%;
+    padding-top: 20px;
 
     &-inner {
       .flex__block();
       .flex__column();
       
       & .notVisible {
-        display: none;
+        display: none !important;
       }
 
       & .hidden {
@@ -95,7 +124,7 @@ button {
 
     &__header {
       .flex__block();
-      width: 100%;
+      width: 80%;
       height: 100px;
     }
 
@@ -126,12 +155,37 @@ button {
     }
 
     &__letters {
-      height: 525px;
+      height: auto;
       .flex__block();
       .flex__column();
       gap: 7px;
-      margin-bottom: 35px;
+      margin-bottom: 50px;
       margin-top: 35px;
+      position: relative;
+
+      & .wordle-game_status {
+        position: absolute;
+        top: 102%;
+        background-color: @greyColor1;
+        width: auto;
+        height: auto;
+        padding: 10px 15px;
+        border-radius: 20px;
+        & img {
+          width: 20px;
+          height: 20px;
+        }
+
+        & .winner p {
+          margin-right: 10px;
+        }
+
+        & .winner, & .loser {
+          .flex__block();
+          .flex__center();
+        }
+
+      }
     }
     
     &__letter {
@@ -153,11 +207,68 @@ button {
     }
     
     &__keyboard {
-      height: 200px;
-      gap: 10px;
       .flex__block();
       .flex__column();
-      margin-bottom: 15px
+      -webkit-box-pack: unset;
+      -ms-flex-pack: unset;
+      justify-content: unset;
+      gap: 10px;
+      margin-top: 20px;
+      
+      &-row {
+        .flex__block();
+        .flex__center();
+        height: auto;
+        gap: 10px;
+      }
+
+      // .media-query();
+
+      .remove__icon {
+        background-image: url('./images/removeBlack.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 40px;
+        height: 40px;
+        font-size: 0;
+        
+        &-outer {
+          .flex__block();
+          .flex__center();
+          width: 80px;
+          height: 60px;
+          background: @greyColor1;
+          border-radius: 10px;
+          &:hover {
+            background: @greyColor2;
+            & div {
+              background-image: url('./images/removeWhite.png');
+            }
+          }
+        }
+      }
+  
+      & span {
+        .flex__block();
+        .flex__center();
+        background-color: @greyColor1;
+        color: @darkGrey2;
+        border-radius: 10px;
+        font-size: 20px;
+        cursor: pointer;
+        height: 60px;
+        width: 60px;
+        &:hover {
+          background-color: @greyColor2;
+          color: @darkTheme;
+        }
+      }
+      & .enter {
+        font-size: 20px;
+        width: 80px;
+        height: 60px
+      }
+
     }
   }
 
@@ -166,44 +277,6 @@ button {
     .flex__center();
     height: 55px;
     gap: 10px;
-
-    .remove__icon {
-      background-image: url('./images/removeWhite.png');
-      background-size: cover;
-      background-repeat: no-repeat;
-      width: 40px;
-      height: 40px;
-      font-size: 0;
-      
-      &-outer {
-        .flex__block();
-        .flex__center();
-        width: 100px;
-        background: @greyColor2;
-        border-radius: 10px;
-        &:hover {
-          background: @greyColor1;
-          & div {
-            background-image: url('./images/removeBlack.png');
-          }
-        }
-      }
-    }
-
-    & span {
-      .flex__block();
-      .flex__center();
-      background-color: @greyColor2;
-      color: @darkGrey2;
-      border-radius: 10px;
-      font-size: 20px;
-      cursor: pointer;
-      width: 100px;
-      &:hover {
-        background-color: @greyColor1;
-        color: @darkTheme;
-      }
-    }
   }
 
   &-options {
@@ -285,10 +358,97 @@ button {
       }
     }
 
+    &-word-not-found {
+      width: auto;
+    }
+
     &-button {
       .flex__block();
       gap: 12px;
     }
+
+    &-status {
+      .flex__block();
+      .flex__column();
+      .flex__center();
+      width: 500px;
+      height: auto;
+      background-color: white;
+      border-radius: 15px;
+
+      &_header {
+        .flex__block();
+        .flex__center();
+        height: 60px;
+        position: relative;
+        margin: 0;
+        padding-top: 10px;
+        background-color: @lightBlue;
+        margin-bottom: 15px;
+        border-radius: 15px;
+
+        & p {
+          .flex__block();
+          .flex__center();
+          font-size: 25px !important;
+        }
+
+        & img {
+          width: 20px;
+          height: 20px;
+        }
+
+        & .wordle__status-image {
+          width: 30px;
+          height: auto;
+          margin-bottom: 10px;
+          margin-left: 5px;
+        }
+
+        & .close-wordle_status {
+          position: absolute;
+          top: 30%;
+          right: 4%;
+          cursor: pointer;
+        }
+      }
+
+      & p {
+        .flex__block();
+        .flex__center();
+        margin-bottom: 15px;
+        font-size: 20px;
+        width: auto;
+      }
+    }
+  }
+
+  &_chosen-word {
+    border: 1px dashed;
+    .flex__block();
+    .flex__center();
+    padding: 15px;
+    width: auto;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 20px;
+    border-radius: 12px;
+  }
+
+  &_new-game {
+    .flex__block();
+    .flex__center();
+    margin-bottom: 20px;
+    margin-top: 25px;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    background: @greenColor;
+    color: white;
+    width: auto;
+    padding: 20px 35px;
+    border-radius: 15px;
+    cursor: pointer;
   }
 
   &_letter_container-inner {
@@ -299,29 +459,29 @@ button {
 
   &-add__letter {
     border: 2px solid @darkGrey1;
-    -webkit-animation: scaleUp 1s ease-in-out forwards;
+    -webkit-animation: scaleBounce .3s ease-in-out forwards;
     animation: scaleBounce .3s ease-in-out forwards;
   }
 
   & .foundLetter {
     background-color: @greenColor;
-    -webkit-transition: background-color 300ms ease-in-out;
-    -o-transition: background-color 300ms ease-in-out;
-    transition: background-color 300ms ease-in-out;
+    -webkit-transition: background-color 1000ms ease;
+    -o-transition: background-color 1000ms ease;
+    transition: background-color 1000ms ease;
   }
   
   & .notFoundLetter {
     background-color: @greyColor2;
-    -webkit-transition: background-color 300ms ease-in-out;
-    -o-transition: background-color 300ms ease-in-out;
-    transition: background-color 300ms ease-in-out;
+    -webkit-transition: background-color 1000ms ease;
+    -o-transition: background-color 1000ms ease;
+    transition: background-color 1000ms ease;
   }
   
   & .almostFoundLetter {
     background-color: @yellowColor;
-    -webkit-transition: background-color 300ms ease-in-out;
-    -o-transition: background-color 300ms ease-in-out;
-    transition: background-color 300ms ease-in-out;
+    -webkit-transition: background-color 1000ms ease;
+    -o-transition: background-color 1000ms ease;
+    transition: background-color 1000ms ease;
   }
 
 }
