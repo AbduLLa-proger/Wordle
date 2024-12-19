@@ -6,6 +6,11 @@ const closePopup = document.querySelector('.close-popup');
 const wordle = document.querySelector('.wordle');
 const winner = document.querySelector('.winner');
 const loser = document.querySelector('.loser');
+const statistics = document.querySelector('.statistics');
+const wordleStatistics = document.querySelector('.wordle_statistics');
+const wordleLetters = document.querySelector('.wordle_container__letters');
+const wordleKeyboard = document.querySelector('.wordle_container__keyboard');
+const closeWordleStatistics = document.querySelector('.close-wordle_statistics');
 const restartGame = document.querySelector('.restart-the-game');
 const wordleStatusText = document.querySelector('.wordle__status-text');
 const wordleStatusImage = document.querySelector('.wordle__status-image');
@@ -20,17 +25,9 @@ const thirdRowLetters = document.querySelector('.third_row');
 const fourthRowLetters = document.querySelector('.fourth_row');
 const fifthRowLetters = document.querySelector('.fifth_row');
 const sixthRowLetters = document.querySelector('.sixth_row');
-const EXAMPLE_WORDS = {
-    'second': 'second',
-    'bright': 'bright',
-    'chance': 'chance',
-    'stream': 'stream',
-    'golden': 'golden',
-    'friend': 'friend',
-};
-const GET_CHOSEN_WORD = () => Object.keys(EXAMPLE_WORDS)[Math.floor(Math.random() * (Object.keys(EXAMPLE_WORDS).length))];
-let CHOSEN_WORD = GET_CHOSEN_WORD();
-console.log('CHOSEN_WORD', CHOSEN_WORD);
+let WORDLE_WORDS = [];
+let CHOSEN_WORD = '';
+const GET_RANDOM_WORD = () => WORDLE_WORDS[Math.floor(Math.random() * WORDLE_WORDS.length)];
 const row_letters = {
     0: 0,
     1: 0,
@@ -67,7 +64,7 @@ wordleNewGame.addEventListener('click', () => {
     popup[3].classList.add('notVisible');
     gameStatus.classList.add('notVisible');
     winner.classList.contains('notVisible') ? loser.classList.add('notVisible') : winner.classList.add('notVisible');
-    CHOSEN_WORD = GET_CHOSEN_WORD();
+    CHOSEN_WORD = GET_RANDOM_WORD();
     currentRow = 0;
 });
 giveUp.addEventListener('click', () => {
@@ -90,34 +87,44 @@ restartGame.addEventListener('click', () => {
         ResetLetters(letterColumn);
         ++letterColumn;
     }
-    if (Wordle_Row[letterColumn].children[1].innerText) {
+    if (Wordle_Row[letterColumn].children[0].innerText) {
         ResetLetters(letterColumn);
         ++letterColumn;
     }
-    if (Wordle_Row[letterColumn].children[2].innerText) {
+    if (Wordle_Row[letterColumn].children[0].innerText) {
         ResetLetters(letterColumn);
         ++letterColumn;
     }
-    if (Wordle_Row[letterColumn].children[3].innerText) {
+    if (Wordle_Row[letterColumn].children[0].innerText) {
         ResetLetters(letterColumn);
         ++letterColumn;
     }
-    if (Wordle_Row[letterColumn].children[4].innerText) {
+    if (Wordle_Row[letterColumn].children[0].innerText) {
         ResetLetters(letterColumn);
         ++letterColumn;
     }
-    if (Wordle_Row[letterColumn].children[5].innerText) {
+    if (Wordle_Row[letterColumn].children[0].innerText) {
         ResetLetters(letterColumn);
         ++letterColumn;
     }
     gameStatus.classList.add('notVisible');
     winner.classList.contains('notVisible') ? loser.classList.add('notVisible') : winner.classList.add('notVisible');
     giveUpPopupAnimation();
-    CHOSEN_WORD = GET_CHOSEN_WORD();
+    CHOSEN_WORD = GET_RANDOM_WORD();
     currentRow = 0;
 });
 closePopup.addEventListener('click', () => {
     giveUpPopupAnimation();
+});
+statistics.addEventListener('click', () => {
+    wordleLetters.classList.add('notVisible');
+    wordleKeyboard.classList.add('notVisible');
+    wordleStatistics.classList.remove('notVisible');
+});
+closeWordleStatistics.addEventListener('click', () => {
+    wordleStatistics.classList.add('notVisible');
+    wordleLetters.classList.remove('notVisible');
+    wordleKeyboard.classList.remove('notVisible');
 });
 const isDisabled = () => popup[0].classList.contains('disabled') || popup[1].classList.contains('disabled') || popup[2].classList.contains('disabled');
 const ResetLetters = (index) => {
@@ -215,9 +222,12 @@ const CheckWordle = (word) => {
         }
         else if (CheckChosenWord?.includes(word[i]) && !keyboard.classList.contains('almostFoundLetter') && !keyboard.classList.contains('foundLetter')) {
             keyboard.classList.add('almostFoundLetter');
+            if (keyboard.classList.contains('notFoundLetter')) {
+                keyboard.classList.remove('notFoundLetter');
+            }
         }
         else {
-            if (!keyboard.classList.contains('notFoundLetter') && !keyboard.classList.contains('foundLetter')) {
+            if (!keyboard.classList.contains('notFoundLetter') && !keyboard.classList.contains('foundLetter') && !keyboard.classList.contains('almostFoundLetter')) {
                 keyboard.classList.add('notFoundLetter');
             }
         }
@@ -254,6 +264,7 @@ const CheckWordle = (word) => {
 };
 wordle.addEventListener('keydown', (event) => {
     const enteredLetter = event.key;
+    console.log('CHOSEN_WORD', CHOSEN_WORD);
     const allowedCtrl = event.ctrlKey &&
         (event.key.toLowerCase() === "a" || event.key.toLowerCase() === "r" ||
             event.key.toLowerCase() === "s" || event.key.toLowerCase() === "d" ||
@@ -278,7 +289,7 @@ wordle.addEventListener('keydown', (event) => {
             if (row_letters[currentRow] !== letters.length) {
                 ShortPopUp();
             }
-            else if (row_letters[currentRow] === letters.length && EXAMPLE_WORDS[WORDLE.toLowerCase()] === undefined) {
+            else if (row_letters[currentRow] === letters.length && !WORDLE_WORDS.includes(WORDLE.toLowerCase())) {
                 NotFoundPopUp();
             }
             else {
@@ -299,7 +310,7 @@ letter.forEach((item) => item.addEventListener('click', (event) => {
         if (row_letters[currentRow] !== letters.length) {
             ShortPopUp();
         }
-        else if (row_letters[currentRow] === letters.length && EXAMPLE_WORDS[WORDLE] === undefined) {
+        else if (row_letters[currentRow] === letters.length && !WORDLE_WORDS.includes(WORDLE)) {
             NotFoundPopUp();
         }
         else {
@@ -310,4 +321,78 @@ letter.forEach((item) => item.addEventListener('click', (event) => {
         AddLetterAction(clickedLetter);
     }
 }));
+const GENERATE_RANDOM_WORD = async () => {
+    try {
+        const response = await fetch("https://api.datamuse.com/words?sp=??????&max=1000");
+        const data = await response.json();
+        WORDLE_WORDS = data.map((value) => value.word);
+        // console.log(WORDLE_WORDS, WORDLE_WORDS.length)
+        if (data.length > 0) {
+            CHOSEN_WORD = WORDLE_WORDS[Math.floor(Math.random() * WORDLE_WORDS.length)];
+        }
+        else {
+            CHOSEN_WORD = 'No words found';
+        }
+    }
+    catch (error) {
+        CHOSEN_WORD = 'error fetch';
+    }
+};
+const getDefinition = async (word) => {
+    try {
+        const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+        const data = await response.json();
+        if (data[0]?.meanings) {
+            // Extract the first definition
+            const definition = data[0].meanings[0].definitions[0].definition;
+            console.log(`Definition of "${word}":`, definition);
+            return definition;
+        }
+        else {
+            console.log(`No definition found for "${word}".`);
+            return null;
+        }
+    }
+    catch (error) {
+        console.error("Error fetching definition:", error);
+        return null;
+    }
+};
+const fetchAllSixLetterWords = async () => {
+    const apiKey = '6692acbcbbmsh72a00711c8a6152p105343jsn12d6bce8670d';
+    const apiHost = 'wordsapiv1.p.rapidapi.com';
+    const words = [];
+    let page = 1; // Start with the first page
+    const limit = 100; // Max results per page
+    let hasMore = true;
+    try {
+        while (hasMore) {
+            const response = await fetch(`https://wordsapiv1.p.rapidapi.com/words/?letters=6&page=${page}&limit=${limit}`, {
+                method: 'GET',
+                headers: {
+                    'x-rapidapi-key': apiKey,
+                    'x-rapidapi-host': apiHost,
+                },
+            });
+            const data = await response.json();
+            console.log('data', data);
+            // Check if there are any words in the current response
+            if (data.results.data.length > 0) {
+                words.push(...data.results.data); // Add words to the result array
+                page++; // Move to the next page
+            }
+            else {
+                hasMore = false; // Stop fetching if no more words
+            }
+        }
+        console.log('All six-letter words:', words);
+        return words; // Return the full list of words
+    }
+    catch (error) {
+        console.error('Error fetching six-letter words:', error);
+        return [];
+    }
+};
+// fetchAllSixLetterWords();
+// GENERATE_RANDOM_WORD();
 //# sourceMappingURL=typescript.js.map

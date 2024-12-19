@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="./images/wordle.svg" type="image/x-icon">
+  <link rel="icon" href="./images/wordle.png" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk&display=swap" rel="stylesheet">
@@ -22,9 +22,15 @@
           <p class="wordle_container__title giveUp cursor">I give up</p>
         </div>
         <div class="wordle_container__options">
-          <div class="wordle-options__icon cursor"></div>
-          <div class="wordle-options__icon cursor"></div>
-          <div class="wordle-options__icon cursor"></div>
+          <div class="icon__outer">
+            <div class="wordle-options__icon statistics cursor"></div>
+          </div>
+          <div class="icon__outer">
+            <div class="wordle-options__icon options cursor"></div>
+          </div>
+          <div class="icon__outer">
+            <div class="wordle-options__icon cursor"></div>
+          </div>
         </div>
       </div>
 
@@ -59,6 +65,129 @@
           </div>
           <p class="wordle_new-game">new game</p>
         </div>
+      </div>
+
+      <div class="wordle_statistics notVisible">
+        <div class="wordle_statistics__header">
+          <p>Statistics</p>
+          <img src="./images/close.png" alt="close" class="close-wordle_statistics cursor">
+        </div>
+
+        <div class="wordle_statistics-grid">
+          <div class="wordle_statistics-grid_block">
+            <span>0</span>
+            <div>
+              <img src="./images//joystick.png" alt="">
+              <p>games played</p>
+            </div>
+          </div>
+
+          <div class="wordle_statistics-grid_block">
+            <span>0</span>
+            <div>
+              <img src="./images/award.png" alt="">
+              <p>games won</p>
+            </div>
+          </div>
+
+          <div class="wordle_statistics-grid_block">
+            <span>0</span>
+            <div>
+              <img src="./images/graph-report.png" alt="">
+              <p>% of wins</p>
+            </div>
+          </div>
+
+          <div class="wordle_statistics-grid_block">
+            <span>#0</span>
+            <div>
+              <img src="./images/diamond.png" alt="">
+              <p>best try</p>
+            </div>
+          </div>
+
+          <div class="wordle_statistics-grid_block">
+            <span>0</span>
+            <div>
+              <img src="./images/fire.png" alt="">
+              <p>current streak</p>
+            </div>
+          </div>
+
+          <div class="wordle_statistics-grid_block">
+            <span>0</span>
+            <div>
+              <img src="./images/thunder.png" alt="">
+              <p>max streak</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="wordle_statistics_share-stats">
+          <p>Share your stats</p>
+        </div>
+
+        <p>Best tries distribution</p>
+
+        <div class="wordle_statistics_distribution">
+          <div class="wordle_statistics_distribution_block">
+            <p class="wordle_statistics_row">#1</p>
+            <div class="wordle_statistics_progress">
+              <p>75%</p>
+              <div class="wordle_statistics_progress-bar"></div>
+            </div>
+            <p class="wordle_statistics_game-count">0</p>
+          </div>
+
+          <div class="wordle_statistics_distribution_block">
+            <p class="wordle_statistics_row">#1</p>
+            <div class="wordle_statistics_progress">
+              <p>75%</p>
+              <div class="wordle_statistics_progress-bar"></div>
+            </div>
+            <p class="wordle_statistics_game-count">0</p>
+          </div>
+
+          <div class="wordle_statistics_distribution_block">
+            <p class="wordle_statistics_row">#1</p>
+            <div class="wordle_statistics_progress">
+              <p>75%</p>
+              <div class="wordle_statistics_progress-bar"></div>
+            </div>
+            <p class="wordle_statistics_game-count">0</p>
+          </div>
+
+          <div class="wordle_statistics_distribution_block">
+            <p class="wordle_statistics_row">#1</p>
+            <div class="wordle_statistics_progress">
+              <p>75%</p>
+              <div class="wordle_statistics_progress-bar"></div>
+            </div>
+            <p class="wordle_statistics_game-count">0</p>
+          </div>
+
+          <div class="wordle_statistics_distribution_block">
+            <p class="wordle_statistics_row">#1</p>
+            <div class="wordle_statistics_progress">
+              <p>75%</p>
+              <div class="wordle_statistics_progress-bar"></div>
+            </div>
+            <p class="wordle_statistics_game-count">0</p>
+          </div>
+
+          <div class="wordle_statistics_distribution_block">
+            <p class="wordle_statistics_row">#1</p>
+            <div class="wordle_statistics_progress">
+              <p>75%</p>
+              <div class="wordle_statistics_progress-bar"></div>
+            </div>
+            <p class="wordle_statistics_game-count">0</p>
+          </div>
+
+        </div>
+
+        <button class="wordle_statistics__reset">Reset stats</button>
+
       </div>
 
       <div class="wordle_container__letters">
