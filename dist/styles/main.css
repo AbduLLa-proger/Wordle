@@ -1,3 +1,6 @@
+/*!*************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/styles.css ***!
+  \*************************************************************************/
 .flex__block {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -188,22 +191,22 @@ button {
   background-color: #13141b;
 }
 .wordle_container__options .icon__outer:hover:first-child > div {
-  background-image: url('images/statsWhite.png');
+  background-image: url(assets/images/statsWhite.png);
 }
 .wordle_container__options .icon__outer:hover:nth-child(2) > div {
-  background-image: url('images/settingsWhite.png');
+  background-image: url(assets/images/settingsWhite.png);
 }
 .wordle_container__options .icon__outer:hover:last-child > div {
-  background-image: url('images/questionWhite.png');
+  background-image: url(assets/images/questionWhite.png);
 }
 .wordle_container__options .icon__outer:first-child > div {
-  background-image: url('images/statsBlack.png');
+  background-image: url(assets/images/statsBlack.png);
 }
 .wordle_container__options .icon__outer:nth-child(2) > div {
-  background-image: url('images/settingsBlack.png');
+  background-image: url(assets/images/settingsBlack.png);
 }
 .wordle_container__options .icon__outer:last-child > div {
-  background-image: url('images/questionBlack.png');
+  background-image: url(assets/images/questionBlack.png);
 }
 .wordle_container__text {
   display: -webkit-box;
@@ -351,7 +354,7 @@ button {
   gap: 10px;
 }
 .wordle_container__keyboard .remove__icon {
-  background-image: url('images/removeBlack.png');
+  background-image: url(assets/images/removeBlack.png);
   background-size: cover;
   background-repeat: no-repeat;
   width: 40px;
@@ -380,7 +383,7 @@ button {
   background: #a6aec2;
 }
 .wordle_container__keyboard .remove__icon-outer:hover div {
-  background-image: url('images/removeWhite.png');
+  background-image: url(assets/images/removeWhite.png);
 }
 .wordle_container__keyboard span {
   display: -webkit-box;
@@ -429,13 +432,13 @@ button {
   gap: 10px;
 }
 .wordle-options .icon__outer:first-child {
-  background-image: url('images/statsBlack.png');
+  background-image: url(assets/images/statsBlack.png);
 }
 .wordle-options .icon__outer:nth-child(2) {
-  background-image: url('images/settingsBlack.png');
+  background-image: url(assets/images/settingsBlack.png);
 }
 .wordle-options .icon__outer:last-child {
-  background-image: url('images/questionBlack.png');
+  background-image: url(assets/images/questionBlack.png);
 }
 .wordle__popup {
   position: fixed;
@@ -1036,3 +1039,4 @@ button {
     transform: scale(0);
   }
 }
+

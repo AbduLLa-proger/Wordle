@@ -1,4 +1,6 @@
-"use strict";
+import "@styles/styles.css";
+import "@assets/images/wordle.png";
+import "./writeFile.ts";
 const giveUp = document.querySelector('.giveUp');
 const letter = document.querySelectorAll('.wordle__letter');
 const popup = document.querySelectorAll('.wordle__popup');
@@ -338,6 +340,23 @@ const GENERATE_RANDOM_WORD = async () => {
         CHOSEN_WORD = 'error fetch';
     }
 };
+// const createTxtFile = (folderPath: string, fileName: string, content: string) => {
+//   console.log('inside txt file')
+//   // Ensure the folder exists
+//   if (!fs.existsSync(folderPath)) {
+//     fs.mkdirSync(folderPath, { recursive: true });
+//   }
+//   // Path for the file
+//   const filePath = path.join(folderPath, fileName);
+//   // Write content to the file
+//   fs.writeFileSync(filePath, content, 'utf8');
+//   console.log(`File created at: ${filePath}`);
+// };
+// // Usage
+// const folderPath = path.join(__dirname, 'words'); // Replace with your folder path
+// const fileName = 'example.txt';
+// const content = 'Hello, this is the content of the file.';
+// createTxtFile(folderPath, fileName, content);
 const getDefinition = async (word) => {
     try {
         const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);

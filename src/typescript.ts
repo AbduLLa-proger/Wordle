@@ -1,3 +1,6 @@
+import "@styles/styles.css";
+import "@assets/images/wordle.png";
+import "./writeFile.ts"
 const giveUp = document.querySelector('.giveUp') as HTMLDivElement;
 const letter = document.querySelectorAll('.wordle__letter') as NodeListOf<HTMLDivElement>;
 const popup = document.querySelectorAll('.wordle__popup') as NodeListOf<HTMLDivElement>;
@@ -10,7 +13,7 @@ const wordleStatistics = document.querySelector('.wordle_statistics') as HTMLDiv
 const wordleLetters = document.querySelector('.wordle_container__letters') as HTMLDivElement;
 const wordleKeyboard = document.querySelector('.wordle_container__keyboard') as HTMLDivElement;
 const closeWordleStatistics = document.querySelector('.close-wordle_statistics') as HTMLDivElement;
-const restartGame = document.querySelector('.restart-the-game') as HTMLDivElement
+const restartGame = document.querySelector('.restart-the-game') as HTMLDivElement;
 const wordleStatusText = document.querySelector('.wordle__status-text') as HTMLDivElement;
 const wordleStatusImage = document.querySelector('.wordle__status-image') as HTMLDivElement;
 const wordleNotFound = document.querySelector('.wordle__popup-word-not-found') as HTMLDivElement;
@@ -24,15 +27,6 @@ const thirdRowLetters = document.querySelector('.third_row') as HTMLDivElement;
 const fourthRowLetters = document.querySelector('.fourth_row') as HTMLDivElement;
 const fifthRowLetters = document.querySelector('.fifth_row') as HTMLDivElement;
 const sixthRowLetters = document.querySelector('.sixth_row') as HTMLDivElement;
-
-// const EXAMPLE_WORDS: Record<string, string> = {
-//   'second': 'second',
-//   'bright': 'bright',
-//   'chance': 'chance',
-//   'stream': 'stream',
-//   'golden': 'golden',
-//   'friend': 'friend',
-// }
 
 interface IWordle_Words {
   word: string;
@@ -383,6 +377,28 @@ const GENERATE_RANDOM_WORD = async () => {
   }
 };
 
+// const createTxtFile = (folderPath: string, fileName: string, content: string) => {
+//   console.log('inside txt file')
+//   // Ensure the folder exists
+//   if (!fs.existsSync(folderPath)) {
+//     fs.mkdirSync(folderPath, { recursive: true });
+//   }
+
+//   // Path for the file
+//   const filePath = path.join(folderPath, fileName);
+
+//   // Write content to the file
+//   fs.writeFileSync(filePath, content, 'utf8');
+
+//   console.log(`File created at: ${filePath}`);
+// };
+
+// // Usage
+// const folderPath = path.join(__dirname, 'words'); // Replace with your folder path
+// const fileName = 'example.txt';
+// const content = 'Hello, this is the content of the file.';
+
+// createTxtFile(folderPath, fileName, content);
 
 const getDefinition = async (word: string) => {
   try {
