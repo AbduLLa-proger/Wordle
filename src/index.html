@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./assets/images/wordle.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk&display=swap" rel="stylesheet">
+  <title>Wordle</title>
+</head>
+
+<body class="wordle" tabindex="0">
+  <section class="wordle_container">
+    <div class="wordle_container-inner">
+
+      <div class="wordle_container__header">
+        <div class="wordle_container__text">
+          <h1 class="wordle_container__title">Wordle</h1>
+          <p class="wordle_container__title giveUp cursor">I give up</p>
+        </div>
+        <div class="wordle_container__options">
+          <div class="icon__outer">
+            <div class="wordle-options__icon statistics cursor"></div>
+          </div>
+          <div class="icon__outer">
+            <div class="wordle-options__icon options cursor"></div>
+          </div>
+          <div class="icon__outer">
+            <div class="wordle-options__icon cursor"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wordle__popup notVisible">
+        <div class="wordle__popup-inner">
+          <p>Are you sure you want to end the game</p>
+          <div class="wordle__popup-button">
+            <button class="restart-the-game">Yes</button><button class="close-popup">No</button>
+          </div>
+        </div>
+      </div>
+      <div class="wordle__popup notVisible">
+        <div class="wordle__popup-short">
+          <p>Too short</p>
+        </div>
+      </div>
+      <div class="wordle__popup notVisible">
+        <div class="wordle__popup-not-found">
+          <p>Word not found</p>
+        </div>
+      </div>
+      <div class="wordle__popup notVisible">
+        <div class="wordle__popup-status">
+          <div class="wordle__popup-status_header">
+            <p class="wordle__status-text">You Lost!</p>
+            <img src="./images/award.png" alt="winner" class="wordle__status-image notVisible">
+            <img src="./images/close.png" alt="close" class="close-wordle_status">
+          </div>
+          <div class="wordle__popup-word-not-found notVisible">
+            <p>The answer was:</p>
+            <p class="wordle_chosen-word"></p>
+          </div>
+          <p class="wordle_new-game">new game</p>
+        </div>
+      </div>
+
+      <div class="wordle_statistics notVisible">
+        <div class="wordle_statistics__header">
+          <p>Statistics</p>
+          <img src="./images/close.png" alt="close" class="close-wordle_statistics cursor">
+        </div>
+
+        <div class="wordle_statistics-grid">
+          <div class="wordle_statistics-grid_block">
+            <span>0</span>
+            <div>
+              <img src="./images//joystick.png" alt="">
+              <p>games played</p>
+            </div>
+          </div>
+
+          <div class="wordle_statistics-grid_block">
+            <span>0</span>
+            <div>
+              <img src="./images/award.png" alt="">
+              <p>games won</p>
+            </div>
+          </div>
+
+          <div class="wordle_statistics-grid_block">
+            <span>0</span>
+            <div>
+              <img src="./images/graph-report.png" alt="">
+              <p>% of wins</p>
+            </div>
+          </div>
+
+          <div class="wordle_statistics-grid_block">
+            <span>#0</span>
+            <div>
+              <img src="./images/diamond.png" alt="">
+              <p>best try</p>
+            </div>
+          </div>
+
+          <div class="wordle_statistics-grid_block">
+            <span>0</span>
+            <div>
+              <img src="./images/fire.png" alt="">
+              <p>current streak</p>
+            </div>
+          </div>
+
+          <div class="wordle_statistics-grid_block">
+            <span>0</span>
+            <div>
+              <img src="./images/thunder.png" alt="">
+              <p>max streak</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="wordle_statistics_share-stats">
+          <p>Share your stats</p>
+        </div>
+
+        <p>Best tries distribution</p>
+
+        <div class="wordle_statistics_distribution">
+          <div class="wordle_statistics_distribution_block">
+            <p class="wordle_statistics_row">#1</p>
+            <div class="wordle_statistics_progress">
+              <p>75%</p>
+              <div class="wordle_statistics_progress-bar"></div>
+            </div>
+            <p class="wordle_statistics_game-count">0</p>
+          </div>
+
+          <div class="wordle_statistics_distribution_block">
+            <p class="wordle_statistics_row">#1</p>
+            <div class="wordle_statistics_progress">
+              <p>75%</p>
+              <div class="wordle_statistics_progress-bar"></div>
+            </div>
+            <p class="wordle_statistics_game-count">0</p>
+          </div>
+
+          <div class="wordle_statistics_distribution_block">
+            <p class="wordle_statistics_row">#1</p>
+            <div class="wordle_statistics_progress">
+              <p>75%</p>
+              <div class="wordle_statistics_progress-bar"></div>
+            </div>
+            <p class="wordle_statistics_game-count">0</p>
+          </div>
+
+          <div class="wordle_statistics_distribution_block">
+            <p class="wordle_statistics_row">#1</p>
+            <div class="wordle_statistics_progress">
+              <p>75%</p>
+              <div class="wordle_statistics_progress-bar"></div>
+            </div>
+            <p class="wordle_statistics_game-count">0</p>
+          </div>
+
+          <div class="wordle_statistics_distribution_block">
+            <p class="wordle_statistics_row">#1</p>
+            <div class="wordle_statistics_progress">
+              <p>75%</p>
+              <div class="wordle_statistics_progress-bar"></div>
+            </div>
+            <p class="wordle_statistics_game-count">0</p>
+          </div>
+
+          <div class="wordle_statistics_distribution_block">
+            <p class="wordle_statistics_row">#1</p>
+            <div class="wordle_statistics_progress">
+              <p>75%</p>
+              <div class="wordle_statistics_progress-bar"></div>
+            </div>
+            <p class="wordle_statistics_game-count">0</p>
+          </div>
+
+        </div>
+
+        <button class="wordle_statistics__reset">Reset stats</button>
+
+      </div>
+
+      <div class="wordle_container__letters">
+        <div class="wordle_letter_container-inner first_row">
+          <div class="wordle_container__letter"></div>
+          <div class="wordle_container__letter"></div>
+          <div class="wordle_container__letter"></div>
+          <div class="wordle_container__letter"></div>
+          <div class="wordle_container__letter"></div>
+          <div class="wordle_container__letter"></div>
+        </div>
+
+        <div class="wordle_letter_container-inner second_row">
+          <div class="wordle_container__letter"></div>
+          <div class="wordle_container__letter"></div>
+          <div class="wordle_container__letter"></div>
+          <div class="wordle_container__letter"></div>
+          <div class="wordle_container__letter"></div>
+          <div class="wordle_container__letter"></div>
+        </div>
+
+        <div class="wordle_letter_container-inner third_row">
+          <div class="wordle_container__letter"></div>
+          <div class="wordle_container__letter"></div>
+          <div class="wordle_container__letter"></div>
+          <div class="wordle_container__letter"></div>
+          <div class="wordle_container__letter"></div>
+          <div class="wordle_container__letter"></div>
+        </div>
+
+        <div class="wordle_letter_container-inner fourth_row">
+          <div class="wordle_container__letter"></div>
+          <div class="wordle_container__letter"></div>
+          <div class="wordle_container__letter"></div>
+          <div class="wordle_container__letter"></div>
+          <div class="wordle_container__letter"></div>
+          <div class="wordle_container__letter"></div>
+        </div>
+
+        <div class="wordle_letter_container-inner fifth_row">
+          <div class="wordle_container__letter"></div>
+          <div class="wordle_container__letter"></div>
+          <div class="wordle_container__letter"></div>
+          <div class="wordle_container__letter"></div>
+          <div class="wordle_container__letter"></div>
+          <div class="wordle_container__letter"></div>
+        </div>
+
+        <div class="wordle_letter_container-inner sixth_row">
+          <div class="wordle_container__letter"></div>
+          <div class="wordle_container__letter"></div>
+          <div class="wordle_container__letter"></div>
+          <div class="wordle_container__letter"></div>
+          <div class="wordle_container__letter"></div>
+          <div class="wordle_container__letter"></div>
+        </div>
+
+        <div class="wordle-game_status notVisible">
+          <div class="winner notVisible">
+            <p>You won!</p>
+            <img src="./images/award.png" alt="winner" class="src" />
+          </div>
+          <div class="loser notVisible">
+            <p>You Lost!</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="wordle_container__keyboard">
+        <div class="wordle_container__keyboard-row">
+          <span class="wordle__letter q">Q</span>
+          <span class="wordle__letter w">W</span>
+          <span class="wordle__letter e">E</span>
+          <span class="wordle__letter r">R</span>
+          <span class="wordle__letter t">T</span>
+          <span class="wordle__letter y">Y</span>
+          <span class="wordle__letter u">U</span>
+          <span class="wordle__letter i">I</span>
+          <span class="wordle__letter o">O</span>
+        </div>
+        <div class="wordle_container__keyboard-row">
+          <span class="wordle__letter p">P</span>
+          <span class="wordle__letter a">A</span>
+          <span class="wordle__letter s">S</span>
+          <span class="wordle__letter d">D</span>
+          <span class="wordle__letter f">F</span>
+          <span class="wordle__letter g">G</span>
+          <span class="wordle__letter h">H</span>
+          <span class="wordle__letter j">J</span>
+          <span class="wordle__letter k">K</span>
+          <span class="wordle__letter l">L</span>
+        </div>
+        <div class="wordle_container__keyboard-row">
+          <div class="remove__icon-outer cursor">
+            <div class="remove__icon wordle__letter">Backspace</div>
+          </div>
+          <span class="wordle__letter z">Z</span>
+          <span class="wordle__letter x">X</span>
+          <span class="wordle__letter c">C</span>
+          <span class="wordle__letter v">V</span>
+          <span class="wordle__letter b">B</span>
+          <span class="wordle__letter n">N</span>
+          <span class="wordle__letter m">M</span>
+          <span class="wordle__letter enter">Enter</span>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+</body>
+
+</html>

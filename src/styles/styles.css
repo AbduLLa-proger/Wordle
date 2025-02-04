@@ -1,0 +1,1038 @@
+.flex__block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.flex__column {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.flex__center {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.font__family {
+  font-family: "Host Grotesk", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+.biggerWebWidth {
+  grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+}
+.mediumWebWidth {
+  grid-template-columns: auto auto auto auto auto auto auto;
+}
+.smallWebWidth {
+  grid-template-columns: auto auto auto auto auto;
+}
+@media (min-width: 1110px) {
+  .media-query {
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+  }
+}
+@media (max-width: 1110px) {
+  .media-query {
+    grid-template-columns: auto auto auto auto auto auto auto;
+  }
+}
+@media (max-width: 768px) {
+  .media-query {
+    grid-template-columns: auto auto auto auto auto;
+  }
+}
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+html {
+  overflow: auto;
+  scroll-behavior: smooth;
+}
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  overflow-y: hidden;
+}
+body h1,
+body p,
+body span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-family: "Host Grotesk", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  width: unset;
+  height: unset;
+}
+body .cursor {
+  cursor: pointer;
+}
+button {
+  border: 0;
+  outline: none;
+  cursor: pointer;
+}
+.wordle_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  padding-top: 20px;
+}
+.wordle_container-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.wordle_container-inner .notVisible {
+  display: none !important;
+}
+.wordle_container-inner .hidden {
+  -webkit-animation: giveUpHidden 0.3s ease-in-out forwards;
+  animation: giveUpHidden 0.3s ease-in-out forwards;
+}
+.wordle_container-inner .visible {
+  -webkit-animation: giveUpVisible 0.3s ease-in-out forwards;
+  animation: giveUpVisible 0.3s ease-in-out forwards;
+}
+.wordle_container__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 80%;
+  height: 100px;
+}
+.wordle_container__options {
+  width: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.wordle_container__options .wordle-options__icon {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 17px;
+}
+.wordle_container__options .icon__outer {
+  background-color: #e6ecfd;
+  width: auto;
+  height: auto;
+  padding: 10px;
+  border-radius: 12px;
+}
+.wordle_container__options .icon__outer:hover {
+  background-color: #13141b;
+}
+.wordle_container__options .icon__outer:hover:first-child > div {
+  background-image: url('assets/images/statsWhite.png');
+}
+.wordle_container__options .icon__outer:hover:nth-child(2) > div {
+  background-image: url('assets/images/settingsWhite.png');
+}
+.wordle_container__options .icon__outer:hover:last-child > div {
+  background-image: url('assets/images/questionWhite.png');
+}
+.wordle_container__options .icon__outer:first-child > div {
+  background-image: url('assets/images/statsBlack.png');
+}
+.wordle_container__options .icon__outer:nth-child(2) > div {
+  background-image: url('assets/images/settingsBlack.png');
+}
+.wordle_container__options .icon__outer:last-child > div {
+  background-image: url('assets/images/questionBlack.png');
+}
+.wordle_container__text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 270px;
+}
+.wordle_container__title {
+  width: auto;
+  font-size: 30px;
+  font-weight: 500;
+}
+.wordle_container__title:last-child {
+  font-size: 25px;
+  background-color: #e6ecfd;
+  padding: 10px;
+  border-radius: 12px;
+  height: auto;
+}
+.wordle_container__title:last-child:hover {
+  background-color: #13141b;
+  color: #e6ecfd;
+}
+.wordle_container__letters {
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 50px;
+  margin-top: 35px;
+  position: relative;
+}
+.wordle_container__letters .wordle-game_status {
+  position: absolute;
+  top: 102%;
+  background-color: #dde1ec;
+  width: auto;
+  height: auto;
+  padding: 10px 15px;
+  border-radius: 20px;
+}
+.wordle_container__letters .wordle-game_status img {
+  width: 20px;
+  height: 20px;
+}
+.wordle_container__letters .wordle-game_status .winner p {
+  margin-right: 10px;
+}
+.wordle_container__letters .wordle-game_status .winner,
+.wordle_container__letters .wordle-game_status .loser {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.wordle_container__letter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  font-family: "Host Grotesk", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 30px;
+  text-transform: capitalize;
+  border: 2px solid #dde1ec;
+  border-radius: 10px;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease;
+  -o-transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+}
+.wordle_container__keyboard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: unset;
+  -ms-flex-pack: unset;
+  justify-content: unset;
+  gap: 10px;
+  margin-top: 20px;
+}
+.wordle_container__keyboard-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: auto;
+  gap: 10px;
+}
+.wordle_container__keyboard .remove__icon {
+  background-image: url('assets/images/removeBlack.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  font-size: 0;
+}
+.wordle_container__keyboard .remove__icon-outer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 80px;
+  height: 60px;
+  background: #dde1ec;
+  border-radius: 10px;
+}
+.wordle_container__keyboard .remove__icon-outer:hover {
+  background: #a6aec2;
+}
+.wordle_container__keyboard .remove__icon-outer:hover div {
+  background-image: url('assets/images/removeWhite.png');
+}
+.wordle_container__keyboard span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  background-color: #dde1ec;
+  color: #3e4052;
+  border-radius: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  height: 60px;
+  width: 60px;
+}
+.wordle_container__keyboard span:hover {
+  background-color: #a6aec2;
+  color: #13141b;
+}
+.wordle_container__keyboard .enter {
+  font-size: 20px;
+  width: 80px;
+  height: 60px;
+}
+.wordle__keyboard-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 55px;
+  gap: 10px;
+}
+.wordle-options .icon__outer:first-child {
+  background-image: url('assets/images/statsBlack.png');
+}
+.wordle-options .icon__outer:nth-child(2) {
+  background-image: url('assets/images/settingsBlack.png');
+}
+.wordle-options .icon__outer:last-child {
+  background-image: url('assets/images/questionBlack.png');
+}
+.wordle__popup {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.wordle__popup-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 275px;
+  width: 500px;
+  border: 1px solid #ebc454;
+  background-color: #ebc454;
+  border-radius: 15px;
+  padding: 10px;
+}
+.wordle__popup-inner p {
+  font-size: 30px;
+  text-align: center;
+}
+.wordle__popup-inner button {
+  font-size: 25px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+.wordle__popup-inner button:hover {
+  background-color: #13141b;
+  color: white;
+}
+.wordle__popup-short {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 150px;
+  width: 250px;
+  border: 1px solid white;
+  background-color: white;
+  border-radius: 15px;
+  padding: 10px;
+  color: #3e4052;
+}
+.wordle__popup-short p {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  font-size: 40px;
+}
+.wordle__popup-not-found {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 250px;
+  width: 350px;
+  border: 1px solid white;
+  background-color: white;
+  border-radius: 15px;
+  padding: 10px;
+  color: #3e4052;
+}
+.wordle__popup-not-found p {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  font-size: 40px;
+}
+.wordle__popup-word-not-found {
+  width: auto;
+}
+.wordle__popup-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 12px;
+}
+.wordle__popup-status {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 500px;
+  height: auto;
+  background-color: white;
+  border-radius: 15px;
+}
+.wordle__popup-status_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 60px;
+  position: relative;
+  margin: 0;
+  padding-top: 10px;
+  background-color: #e6ecfd;
+  margin-bottom: 15px;
+  border-radius: 15px;
+}
+.wordle__popup-status_header p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  font-size: 25px !important;
+}
+.wordle__popup-status_header img {
+  width: 20px;
+  height: 20px;
+}
+.wordle__popup-status_header .wordle__status-image {
+  width: 30px;
+  height: auto;
+  margin-bottom: 10px;
+  margin-left: 5px;
+}
+.wordle__popup-status_header .close-wordle_status {
+  position: absolute;
+  top: 30%;
+  right: 4%;
+  cursor: pointer;
+}
+.wordle__popup-status p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  font-size: 20px;
+  width: auto;
+}
+.wordle_chosen-word {
+  border: 1px dashed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 15px;
+  width: auto;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 20px;
+  border-radius: 12px;
+}
+.wordle_new-game {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-top: 25px;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+  background: #87b65e;
+  color: white;
+  width: auto;
+  padding: 20px 35px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+.wordle_letter_container-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  gap: 7px;
+}
+.wordle-add__letter {
+  border: 2px solid #65677e;
+  -webkit-animation: scaleBounce 0.3s ease-in-out forwards;
+  animation: scaleBounce 0.3s ease-in-out forwards;
+}
+.wordle .foundLetter {
+  background-color: #87b65e;
+  -webkit-transition: background-color 1000ms ease;
+  -o-transition: background-color 1000ms ease;
+  transition: background-color 1000ms ease;
+}
+.wordle .notFoundLetter {
+  background-color: #a6aec2;
+  -webkit-transition: background-color 1000ms ease;
+  -o-transition: background-color 1000ms ease;
+  transition: background-color 1000ms ease;
+}
+.wordle .almostFoundLetter {
+  background-color: #ebc454;
+  -webkit-transition: background-color 1000ms ease;
+  -o-transition: background-color 1000ms ease;
+  transition: background-color 1000ms ease;
+}
+.wordle_statistics {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 900px;
+  height: 750px;
+}
+.wordle_statistics__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: relative;
+  background-color: #e6ecfd;
+  border-radius: 15px;
+  height: auto;
+  padding: 15px 0;
+}
+.wordle_statistics__header p {
+  font-size: 20px;
+}
+.wordle_statistics__header img {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 2%;
+}
+.wordle_statistics-grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  place-items: center;
+  margin-top: 40px;
+  gap: 15px;
+}
+.wordle_statistics-grid_block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background-color: #f5f7fb;
+  border-radius: 12px;
+  width: 250px;
+  height: 120px;
+}
+.wordle_statistics-grid_block span {
+  font-size: 50px;
+  margin-top: 15px;
+}
+.wordle_statistics-grid_block div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+.wordle_statistics-grid_block img {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+.wordle_statistics-grid_block p {
+  text-transform: uppercase;
+  font-size: 13px;
+}
+.wordle_statistics_share-stats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  background-color: #f5f7fb;
+  margin-top: 20px;
+  padding: 15px 0;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  height: auto;
+}
+.wordle_statistics_distribution {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin: 10px 0;
+}
+.wordle_statistics_distribution_block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.wordle_statistics_distribution_block p {
+  width: 5%;
+}
+.wordle_statistics_progress {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 90%;
+  position: relative;
+}
+.wordle_statistics_progress p {
+  position: absolute;
+  left: 71%;
+  color: white;
+  font-size: 13px;
+}
+.wordle_statistics_progress-bar {
+  width: 100%;
+  height: 25px;
+  background: linear-gradient(to right, #4caf50 75%, #ddd 75%);
+  border: 1px solid #ccc;
+  border-radius: 15px;
+}
+.wordle_statistics_row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  justify-content: flex-start;
+}
+.wordle_statistics_game-count {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  justify-content: flex-end;
+}
+.wordle_statistics__reset {
+  width: auto;
+  height: auto;
+  padding: 15px;
+  border-radius: 15px;
+  border: 1px solid #3e4052;
+}
+@-webkit-keyframes scaleBounce {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  50% {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes scaleBounce {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  50% {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@-webkit-keyframes giveUpVisible {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  50% {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes giveUpVisible {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  50% {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@-webkit-keyframes giveUpHidden {
+  0% {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+  }
+  5% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+}
+@keyframes giveUpHidden {
+  0% {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+  }
+  5% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+}
